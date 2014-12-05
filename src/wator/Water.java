@@ -89,4 +89,10 @@ public class Water extends Denizen {
         return waterColor;
     }
 
+	@Override
+	public boolean canStarve() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

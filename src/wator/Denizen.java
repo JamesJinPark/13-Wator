@@ -77,7 +77,7 @@ public abstract Color getColor();
     public void makeOneStep(Ocean ocean) {
         Denizen[][] array = ocean.getArray();
         timeToStarvation -= 1;
-        if (timeToStarvation <= 0 && !(this instanceof Fish)) {
+        if (timeToStarvation <= 0 && canStarve()) {
             array[myRow][myColumn] = WATER;
             System.out.println(this + " starved.");
             return;
@@ -87,6 +87,8 @@ public abstract Color getColor();
             moveAndMaybeGiveBirth(ocean, direction);
         }
     }
+    
+    public abstract boolean canStarve();
     
     /**
      * Determines whether this Denizen can move in the given direction.
@@ -120,4 +122,28 @@ public abstract Color getColor();
     public String toString() {
         return "Denizen at (" + myRow + ", " + myColumn + ")";
     }
+    
+    /**
+	 * Determines if this Denizen equals the other.
+	 * this Denizen is equal to other if other is an instance of 
+	 * Denizen and both have equal Denizen fields.
+	 *
+	 * @param other the Object to compare equality with.
+	 * @return true if this Denizen is equal to the 
+	 * passed in object, else false.
+	 */
+	@Override
+	public boolean equals (Object other) {
+
+		//Check if other is an instance of Denizen
+		if (!(other instanceof Denizen)) {
+			return false;
+		}
+	
+		//Cast other to a Denizen
+		Denizen that = (Denizen) other;
+		
+		//Check if the Denizen is an instance of the other.
+		return this == that;
+	}
 }

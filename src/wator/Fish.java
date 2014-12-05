@@ -70,4 +70,10 @@ public class Fish extends Denizen {
     public String toString() {
         return "Fish at (" + myRow + ", " + myColumn + ")";
     }
+
+	@Override
+	public boolean canStarve() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

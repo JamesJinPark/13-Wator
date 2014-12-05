@@ -41,6 +41,11 @@ public class Shark extends Denizen {
         return ! (neighbor instanceof Shark);
     }
     
+    public boolean canEat(Ocean ocean, Direction direction){
+    	Denizen neighbor = ocean.get(myRow, myColumn, direction);
+    	return neighbor instanceof Fish; 
+    }
+    
     /* (non-Javadoc)
      * @see wator.Denizen#moveAndMaybeGiveBirth(wator.Ocean, wator.Direction)
      */
@@ -51,6 +56,9 @@ public class Shark extends Denizen {
             this.timeToGestation = Parameters.sharkGestationPeriod;
         } else {
             ocean.set(myRow, myColumn, WATER);
+        }        
+        if (canEat(ocean, direction)){
+        	timeToStarvation = Parameters.sharkStarvationPeriod;
         }
         ocean.set(myRow, myColumn, direction, this);
         justMoved = true;
@@ -71,4 +79,11 @@ public class Shark extends Denizen {
     public String toString() {
         return "Shark at (" + myRow + ", " + myColumn + ")";
     }
+
+	@Override
+	public boolean canStarve() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+    
 }

@@ -96,6 +96,8 @@ public class Ocean extends Observable {
         int adjRow = (row + nRows) % nRows;
         int adjColumn = (column + nColumns) % nColumns;
         array[adjRow][adjColumn] = denizen;
+        denizen.myRow = adjRow; 
+        denizen.myColumn = adjColumn;
     }
 
     /**
@@ -171,7 +173,7 @@ public class Ocean extends Observable {
     public void setRunning(boolean running) {
         if (running) {
             timer = new Timer(true);
-            timer.schedule(new Strobe(), 0, 250); //
+            timer.schedule(new Strobe(), 100, 1000); //
         } else {
             timer.cancel();
         }
