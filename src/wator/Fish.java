@@ -50,7 +50,7 @@ public class Fish extends Denizen {
         }
         ocean.set(myRow, myColumn, direction, this);
         justMoved = true;
-        System.out.println(this + " just moved.");
+        //System.out.println(this + " just moved.");
     }
 
     /* (non-Javadoc)

@@ -17,6 +17,7 @@ public class Ocean extends Observable {
     private static Random rand = new Random();
     private int delay;
     private Timer timer;
+    private Strobe strobe;
 
     /**
      * Constructs an Ocean, initially filled only with Water.
@@ -60,7 +61,8 @@ public class Ocean extends Observable {
     /**
      * Returns the contents of the ocean array at the given (row, column)
      * location. The array is treated as a torus--any location outside the
-     * array bounds wraps around to the other side.
+     * array bounds wr
+     * aps around to the other side.
      * @param row The row to be examined.
      * @param column The column to be examined.
      * @return The contents of the given (row, column), possibly adjusted.
@@ -156,10 +158,17 @@ public class Ocean extends Observable {
      * Give everything in the Ocean's array a chance to do something.
      */
     public void makeOneStep() {
-        for (int i = 0; i < nRows; i += 1) {
-            for (int j = 0; j < nColumns; j += 1) {
+        int i = 0; 
+        int j = 0; 
+    	for (i = 0; i < nRows; i += 1) {
+            for (j = 0; j < nColumns; j += 1) {
                 Denizen denizen = array[i][j];
                 denizen.makeOneStep(this);
+            }
+        }
+        for (i = 0; i < nRows; i += 1) {
+            for (j = 0; j < nColumns; j += 1) {
+            	array[i][j].justMoved = false;
             }
         }
         setChanged();
@@ -173,7 +182,8 @@ public class Ocean extends Observable {
     public void setRunning(boolean running) {
         if (running) {
             timer = new Timer(true);
-            timer.schedule(new Strobe(), 100, 1000); //
+            strobe = new Strobe();
+            timer.schedule(strobe, 0, 50); //
         } else {
             timer.cancel();
         }
@@ -183,8 +193,16 @@ public class Ocean extends Observable {
      * Sets the frame rate to be 1000/delay.
      * @param delay The number of milliseconds between frames.
      */
-    public void setDelay(int delay) {
-        this.delay = delay;
+    public void setDelay(int delay, boolean running) {
+    	if (running){
+    		this.delay = delay;
+    		timer.cancel();
+    		timer = new Timer(true);
+    		timer.schedule(new Strobe(), 0, delay);
+    	}
+    	else {
+    		timer.cancel();
+    	}
     }
      
     /**
@@ -196,5 +214,4 @@ public class Ocean extends Observable {
             makeOneStep();
         }
     }
-
 }

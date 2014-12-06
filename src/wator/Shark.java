@@ -53,7 +53,7 @@ public class Shark extends Denizen {
     public void moveAndMaybeGiveBirth(Ocean ocean, Direction direction) {
         if (timeToGestation <= 0) {
             giveBirth(ocean, myRow, myColumn);
-            this.timeToGestation = Parameters.sharkGestationPeriod;
+            timeToGestation = Parameters.sharkGestationPeriod;
         } else {
             ocean.set(myRow, myColumn, WATER);
         }        

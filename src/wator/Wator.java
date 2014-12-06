@@ -39,7 +39,7 @@ public class Wator extends JFrame {
     private JPanel runPanel = new JPanel();
     private JPanel speedControlPanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
-    private JSlider speedControl = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 80);
+    private JSlider speedControl = new JSlider(SwingConstants.HORIZONTAL, 0, 100, 50);
     private JButton runButton = new JButton("Run");
     private JButton populateButton = new JButton("Populate");
     private JTextField sharkCount = new JTextField("100");
@@ -143,11 +143,15 @@ public class Wator extends JFrame {
         speedControl.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                int sliderValue = speedControl.getValue();
-                int delay = 10000 - 100 * sliderValue;
-                ocean.setDelay(delay);
-            }
-            
+                JSlider source = (JSlider)e.getSource();
+                if (running){
+                	if (!source.getValueIsAdjusting()) {
+                    int sliderValue = speedControl.getValue();
+                    int delay = 101 - sliderValue;
+                    ocean.setDelay(delay, running);
+                }
+                }
+            }  
         });
     }
 

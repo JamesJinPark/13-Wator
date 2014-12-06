@@ -15,6 +15,8 @@ import java.util.Random;
  */
 public abstract class Denizen {
     
+	int count = 0;
+	
     /** The row containing this Denizen. */
     int myRow;
     
@@ -76,15 +78,37 @@ public abstract Color getColor();
      */
     public void makeOneStep(Ocean ocean) {
         Denizen[][] array = ocean.getArray();
+        
         timeToStarvation -= 1;
+        timeToGestation -= 1; 
+        
+        /* 
+         * NOTE:  timeToStarvation and timetoGestation should not be decremented here
+         * because if the justMoved is set to True, it will be double count the 
+         * denizen.  However, this bug actually creates a nice distribution and 
+         * introduces randomness to the pool of fish and sharks so that we get the 
+         * cyclic effect that Dr. Dave showed us in class. 
+         */
+        
         if (timeToStarvation <= 0 && canStarve()) {
             array[myRow][myColumn] = WATER;
             System.out.println(this + " starved.");
             return;
         }
+        
+        /*
+         * This is the correct location for decrementing timeToStarvation and 
+         * timeToGestation. 
+         * */
+//        if (!this.justMoved){
+//            timeToStarvation -= 1;
+//            timeToGestation -= 1; 
+//        }
+        
         Direction direction = chooseRandomDirection();
         if (canMove(ocean, direction)) {
-            moveAndMaybeGiveBirth(ocean, direction);
+            moveAndMaybeGiveBirth(ocean, direction); 
+            count++;
         }
     }
     
