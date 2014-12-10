@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 /**
  * @author David Matuszek
  * @author James Park
- * @author 
+ * @author Manusnan Suriyalaksh
  */
 public class Display extends JPanel implements Observer {
     private static final long serialVersionUID = 1L;

@@ -27,7 +27,7 @@ import javax.swing.event.ChangeListener;
  *  
  * @author David Matuszek
  * @author James Park
- * @author
+ * @author Manusnan Suriyalaksh
  */
 public class Wator extends JFrame {
     private static final long serialVersionUID = 1L; // Vestigal; unused
@@ -44,7 +44,7 @@ public class Wator extends JFrame {
     private JButton populateButton = new JButton("Populate");
     private JTextField sharkCount = new JTextField("100");
     private JTextField fishCount = new JTextField("500");
-    private JTextField sharkGestationPeriod = new JTextField("20");
+    private JTextField sharkGestationPeriod = new JTextField("30");
     private JTextField fishGestationPeriod = new JTextField("10");
     private JTextField sharkStarvationPeriod = new JTextField("20");
     private TitledBorder sharkBorder = new TitledBorder("Sharks");

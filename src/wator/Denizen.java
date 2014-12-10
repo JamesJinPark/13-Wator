@@ -11,7 +11,7 @@ import java.util.Random;
  * Subclasses of Denizen are Shark, Fish, and Water.
  * @author David Matuszek
  * @author James Park
- * @author
+ * @author Manusnan Suriyalaksh
  */
 public abstract class Denizen {
     
@@ -36,6 +36,9 @@ public abstract class Denizen {
      */
     boolean justMoved;
     
+    /**
+     *generate random variable. 
+     */
     private Random rand = new Random();
     
     Denizen WATER = Water.getInstance();
@@ -70,10 +73,10 @@ public abstract Color getColor();
     }
     
     /**
-     * Gives each Denizen in the Ocean a chance to starve, move, and/or
-     * give birth. This method takes care of starvation, but movement
-     * and gestation must be handled by methods specific to the type
-     * of Denizen.
+     * Gives each Denizen in the Ocean a chance to move, and/or
+     * give birth. If shark, then also starve.  This method takes care of 
+     * starvation, but movement and gestation must be handled by methods 
+     * specific to the type of Denizen.
      * @param ocean The Ocean containing all the Denizens.
      */
     public void makeOneStep(Ocean ocean) {
@@ -92,7 +95,6 @@ public abstract Color getColor();
         
         if (timeToStarvation <= 0 && canStarve()) {
             array[myRow][myColumn] = WATER;
-            System.out.println(this + " starved.");
             return;
         }
         
@@ -108,10 +110,12 @@ public abstract Color getColor();
         Direction direction = chooseRandomDirection();
         if (canMove(ocean, direction)) {
             moveAndMaybeGiveBirth(ocean, direction); 
-            count++;
         }
     }
     
+    /**
+     * @return true if the denizen can starve.
+     */
     public abstract boolean canStarve();
     
     /**

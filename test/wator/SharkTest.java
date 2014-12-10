@@ -6,8 +6,20 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * 
+ * Tests the Shark class.
+ * 
+ * @author James Park
+ * @author Manusnan Suriyalaksh
+ *
+ */
 public class SharkTest {
 	
+	/**
+	 * Tests whether a shark can starve after moving a certain 
+	 * number of times.
+	 */
 	@Test
 	public void sharkStarvesAfterXMoves() {
 		Ocean ocean = new Ocean(2, 2); 
@@ -35,6 +47,10 @@ public class SharkTest {
 		assertEquals(denizen4, WATER);
 	}
 	
+	/**
+	 *  Tests whether a shark will be able to nourish itself
+	 *  and not starve after eating a fish.
+	 */
 	@Test
 	public void sharkNotStarveAfterEat() {
 		Ocean ocean = new Ocean(2, 2); 
@@ -71,6 +87,10 @@ public class SharkTest {
 		} 
 	}
 	
+	/**
+	 * Tests that a shark cannot move towards a spot if a shark is already 
+	 * in that spot.
+	 */
 	@Test
 	public void sharkCantMoveTowardsShark() {
 		Ocean ocean = new Ocean(2, 2);
@@ -97,6 +117,9 @@ public class SharkTest {
 	}
 	
 	
+	/**
+	 * Test whether a shark can procreate.
+	 */
 	@Test
 	public void sharkCanProcreate() {
 		Ocean ocean = new Ocean(2, 2);

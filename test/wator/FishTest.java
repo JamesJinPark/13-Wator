@@ -4,8 +4,17 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * Tests the Fish class
+ * 
+ * @author James Park
+ * @author Manusnan Suriyalaksh
+ */
 public class FishTest {
 
+	/**
+	 * Tests whether fish can starve.  (Fish should not starve)
+	 */
 	@Test
 	public void fishNeverStarves() { 
 		Ocean ocean = new Ocean(2, 2); 
@@ -20,6 +29,10 @@ public class FishTest {
 		}
 	}
 	
+	/**
+	 * Tests whether a fish will move towards a spot if 
+	 * a shark is already in that spot.
+	 */
 	@Test
 	public void fishCantMoveTowardsShark() {
 		Ocean ocean = new Ocean(2, 2);
@@ -45,6 +58,9 @@ public class FishTest {
 		assertTrue(fishMovement == 0 ); //fish has not been able to move
 	}
 	
+	/**
+	 * Tests whether fish can procreate,
+	 */
 	@Test
 	public void fishCanProcreate() {
 		Ocean ocean = new Ocean(2, 2);

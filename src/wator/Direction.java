@@ -7,7 +7,7 @@ package wator;
  * 
  * @author David Matuszek
  * @author James Park
- * @author
+ * @author Manusnan Suriyalaksh
  */
 public enum Direction {       
     LEFT(-1, 0), RIGHT(1, 0), UP(0, -1), DOWN(0, 1);

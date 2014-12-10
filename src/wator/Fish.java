@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
  * @author David Matuszek
  * @author James Park
- * @author
+ * @author Manusnan Suriyalaksh
  */
 public class Fish extends Denizen {
     
@@ -50,7 +50,6 @@ public class Fish extends Denizen {
         }
         ocean.set(myRow, myColumn, direction, this);
         justMoved = true;
-        //System.out.println(this + " just moved.");
     }
 
     /* (non-Javadoc)
@@ -70,7 +69,11 @@ public class Fish extends Denizen {
     public String toString() {
         return "Fish at (" + myRow + ", " + myColumn + ")";
     }
-
+    
+    
+	/* (non-Javadoc)
+	 * @see wator.Denizen#canStarve()
+	 */
 	@Override
 	public boolean canStarve() {
 		// TODO Auto-generated method stub

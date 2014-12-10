@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
  * @author David Matuszek
  * @author James Park
- * @author
+ * @author Manusnan Suriyalaksh
  */
 public class Shark extends Denizen {
     
@@ -41,6 +41,11 @@ public class Shark extends Denizen {
         return ! (neighbor instanceof Shark);
     }
     
+    /**
+     * @param ocean
+     * @param direction
+     * @return true if there is a neighbor that can be eaten.
+     */
     public boolean canEat(Ocean ocean, Direction direction){
     	Denizen neighbor = ocean.get(myRow, myColumn, direction);
     	return neighbor instanceof Fish; 
@@ -62,7 +67,6 @@ public class Shark extends Denizen {
         }
         ocean.set(myRow, myColumn, direction, this);
         justMoved = true;
-        System.out.println(this + " just moved.");
     }
 
     /* (non-Javadoc)
@@ -75,11 +79,17 @@ public class Shark extends Denizen {
         return babyShark;
     }
     
+    /* (non-Javadoc)
+     * @see wator.Denizen#toString()
+     */
     @Override
     public String toString() {
         return "Shark at (" + myRow + ", " + myColumn + ")";
     }
 
+	/* (non-Javadoc)
+	 * @see wator.Denizen#canStarve()
+	 */
 	@Override
 	public boolean canStarve() {
 		// TODO Auto-generated method stub

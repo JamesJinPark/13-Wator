@@ -18,7 +18,7 @@ import java.awt.Color;
      * 
      * @author David Matuszek
      * @author James Park
-     * @author
+     * @author Manusnan Suriyalaksh
  */
 public class Water extends Denizen {
     // The location (0, 0) should never be used.
@@ -89,9 +89,11 @@ public class Water extends Denizen {
         return waterColor;
     }
 
+	/* (non-Javadoc)
+	 * @see wator.Denizen#canStarve()
+	 */
 	@Override
 	public boolean canStarve() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

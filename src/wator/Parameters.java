@@ -11,7 +11,7 @@ package wator;
  * 
  * @author David Matuszek
  * @author James Park
- * @author
+ * @author Manusnan Suriyalaksh
  */
 public class Parameters {
     static int numberOfSharks;

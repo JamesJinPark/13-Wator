@@ -8,7 +8,7 @@ import java.util.TimerTask;
 /**
  * @author David Matuszek
  * @author James Park
- * @author
+ * @author Manusnan Suriyalaksh
  */
 public class Ocean extends Observable {
     private Denizen[][] array;
